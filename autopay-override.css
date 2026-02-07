@@ -1,0 +1,55 @@
+/* AUTO-PAY BUTTON */
+.auto-pay-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.auto-pay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    border-color: #00ffff;
+}
+
+.auto-pay-btn.active {
+    background: linear-gradient(135deg, #ff0080 0%, #00ffff 100%);
+    border-color: #00ffff;
+    color: white;
+    box-shadow: 0 4px 16px rgba(0, 255, 255, 0.3);
+}
+
+.auto-pay-btn.active:hover {
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
+.auto-pay-btn .lock-icon {
+    flex-shrink: 0;
+}
+
+.auto-pay-text {
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .auto-pay-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+        margin-right: 0.75rem;
+    }
+
+    .auto-pay-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}

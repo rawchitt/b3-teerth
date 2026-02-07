@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassette - Artist Dashboard</title>
+    <meta name="description" content="Upload your music and get paid instantly for every stream.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="artist-styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo" onclick="window.location.href='landing.html'" style="cursor: pointer;">
+                    <svg width="60" height="36" viewBox="0 0 331 196" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g filter="url(#filter0_d_28_57)">
+                            <rect width="327" height="188" rx="12" fill="#361D58" />
+                        </g>
+                        <circle cx="19" cy="10" r="5" fill="#9C9595" />
+                        <circle cx="312" cy="10" r="5" fill="#9C9595" />
+                        <circle cx="19" cy="175" r="5" fill="#9C9595" />
+                        <circle cx="312" cy="175" r="5" fill="#9C9595" />
+                        <rect x="21" y="24" width="286" height="115" rx="12" fill="#A78BFA" />
+                        <rect x="32" y="31" width="266" height="47" rx="12" fill="#F0E1D1" />
+                        <line x1="79" y1="41.5" x2="280" y2="41.5" stroke="#361D58" stroke-width="3" />
+                        <line x1="79" y1="64.5" x2="280" y2="64.5" stroke="#361D58" stroke-width="3" />
+                        <rect x="40" y="36" width="30" height="30" rx="12" fill="#A78BFA" />
+                        <path
+                            d="M54.9141 44.041L50.207 57H48.2832L53.7031 42.7812H54.9434L54.9141 44.041ZM58.8594 57L54.1426 44.041L54.1133 42.7812H55.3535L60.793 57H58.8594ZM58.6152 51.7363V53.2793H50.627V51.7363H58.6152Z"
+                            fill="white" />
+                        <rect x="70" y="82" width="206" height="42" fill="#646060" />
+                        <line x1="61.2151" y1="187.38" x2="91.5777" y2="148.921" stroke="black" stroke-width="2" />
+                        <path d="M90.3705 149.02L168.157 148.06L245.944 149.05" stroke="black" stroke-width="2" />
+                        <line x1="245.785" y1="148.38" x2="276.724" y2="187.57" stroke="black" stroke-width="2" />
+                        <circle cx="244.5" cy="102.5" r="17" fill="black" stroke="#C3B1B1" />
+                        <circle cx="94.5" cy="102.5" r="17" fill="black" stroke="#C3B1B1" />
+                        <defs>
+                            <filter id="filter0_d_28_57" x="0" y="0" width="331" height="196"
+                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" type="matrix"
+                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                <feOffset dx="4" dy="8" />
+                                <feComposite in2="hardAlpha" operator="out" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_28_57" />
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_28_57"
+                                    result="shape" />
+                            </filter>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">Cassette</span>
+                </div>
+
+                <nav class="nav-menu">
+                    <a href="#" class="nav-link active">Dashboard</a>
+                    <a href="#" class="nav-link">My Music</a>
+                    <a href="#" class="nav-link">Analytics</a>
+                    <a href="landing.html" class="nav-link">Back to Home</a>
+                </nav>
+
+                <div class="wallet-section">
+                    <div id="walletInfo" class="wallet-info hidden">
+                        <div class="balance-display">
+                            <span class="balance-label">Balance:</span>
+                            <span id="userBalance" class="balance-amount">0.0000</span>
+                            <span class="balance-currency">ETH</span>
+                        </div>
+                        <div class="wallet-address" id="walletAddress">0x0000...0000</div>
+                    </div>
+                    <button id="connectWalletBtn" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.5 6.25H15V5C15 3.61929 13.8807 2.5 12.5 2.5H5C3.61929 2.5 2.5 3.61929 2.5 5V15C2.5 16.3807 3.61929 17.5 5 17.5H17.5C18.1904 17.5 18.75 16.9404 18.75 16.25V7.5C18.75 6.80964 18.1904 6.25 17.5 6.25Z"
+                                stroke="currentColor" stroke-width="1.5" />
+                            <circle cx="14" cy="11.875" r="1.25" fill="currentColor" />
+                        </svg>
+                        <span id="connectWalletText">Connect Wallet</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <h1 class="hero-title">
+                    Artist
+                    <span class="gradient-text">Dashboard</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Upload your music and start earning instantly with blockchain technology.
+                </p>
+            </section>
+
+            <!-- Artist Actions Section -->
+            <section class="artist-actions">
+                <!-- Upload Song Card -->
+                <div class="action-card">
+                    <div class="action-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="action-title">Upload Song</h3>
+                    <p class="action-description">Upload your music file from IPFS to the blockchain</p>
+                    <input type="text" id="ipfsHash" class="ipfs-input" placeholder="Enter IPFS Hash (e.g., QmXxx...)">
+                    <input type="text" id="songTitle" class="ipfs-input" placeholder="Song Title">
+                    <input type="text" id="artistName" class="ipfs-input" placeholder="Artist Name">
+                    <input type="text" id="songPrice" class="ipfs-input" placeholder="Price in ETH (e.g., 0.001)">
+                    <button id="uploadSongBtn" class="action-btn upload-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Upload to IPFS</span>
+                    </button>
+                    <p class="action-hint">Connect wallet first to upload songs</p>
+                </div>
+
+                <!-- Mint Song Card -->
+                <div class="action-card">
+                    <div class="action-icon mint-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="action-title mint-title">Mint Song NFT</h3>
+                    <p class="action-description">Create an NFT for your uploaded song on the blockchain</p>
+                    <div class="mint-info">
+                        <div class="info-row">
+                            <span class="info-label">Song:</span>
+                            <span id="mintSongName" class="info-value">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">IPFS Hash:</span>
+                            <span id="mintIpfsHash" class="info-value">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Price:</span>
+                            <span id="mintPrice" class="info-value">-</span>
+                        </div>
+                    </div>
+                    <button id="mintSongBtn" class="action-btn mint-btn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>Mint NFT</span>
+                    </button>
+                    <p class="action-hint">Upload a song first to mint it as NFT</p>
+                </div>
+            </section>
+
+            <!-- Uploaded Songs Section -->
+            <section class="uploaded-songs-section">
+                <h2 class="section-title">Your Uploaded Songs</h2>
+                <div id="uploadedSongsGrid" class="uploaded-songs-grid">
+                    <div class="empty-state">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="2" />
+                            <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <p>No songs uploaded yet</p>
+                        <span>Upload your first song to get started</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-icon success">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="25" stroke="#10b981" stroke-width="4" fill="none" />
+                    <path d="M20 30L26 36L40 22" stroke="#10b981" stroke-width="4" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <h3 class="modal-title" id="successTitle">Success!</h3>
+            <p class="modal-message" id="successMessage">Operation completed successfully</p>
+            <button class="btn-primary" onclick="closeSuccessModal()">Continue</button>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-icon error">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                    <circle cx="30" cy="30" r="25" stroke="#ef4444" stroke-width="4" fill="none" />
+                    <path d="M22 22L38 38M38 22L22 38" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
+                </svg>
+            </div>
+            <h3 class="modal-title">Error</h3>
+            <p id="errorMessage" class="modal-message">Something went wrong. Please try again.</p>
+            <button class="btn-primary" onclick="closeErrorModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Core Ethereum Library -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+    <script type="module" src="artist-app.js"></script>
+</body>
+
+</html>
